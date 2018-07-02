@@ -1,0 +1,9 @@
+{
+  "name": "fragmentarium-parser",
+  "version": "0.1.0",
+  "description": "A script to transform fragment database exported from FileMaker to JSON format.",
+  "main": "index.js",
+  "repository": "https://github.com/ElectronicBabylonianLiterature/fragmentarium-parser.git",
+  "author": "Jussi Laasonen <jussi.laasonen@lmu.de>",
+  "license": "MIT"
+}
