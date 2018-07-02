@@ -25,5 +25,8 @@
       "jasmine": true,
       "node": true
     }
+  },
+  "dependencies": {
+    "papaparse": "^4.5.0"
   }
 }
