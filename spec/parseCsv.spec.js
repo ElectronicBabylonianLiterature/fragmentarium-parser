@@ -65,8 +65,8 @@ describe('parseCsv', () => {
     expectCsv({joins: 'join1 + join2'}).toParseTo({joins: ['join1', 'join2']})
   })
 
-  it('parses  joins', () => {
-    expectCsv({joins: 'join1join2'}).toParseTo({joins: ['join1', 'join2']})
+  it('parses \\u000b joins', () => {
+    expectCsv({joins: 'join1\u000bjoin2'}).toParseTo({joins: ['join1', 'join2']})
   })
 
   it('parses ₤ folio', () => {
