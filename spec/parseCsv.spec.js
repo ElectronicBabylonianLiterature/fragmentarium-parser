@@ -18,7 +18,7 @@ const csvDefaults = {
   script: 'script',
   date: 'date',
   folio: '',
-  register: 'register',
+  register: '',
   transliteration: 'transliteration',
   notes: 'notes'
 }
@@ -26,7 +26,8 @@ const csvDefaults = {
 const objectDefaults = {
   ...csvDefaults,
   joins: [],
-  folio: []
+  folio: [],
+  register: []
 }
 
 function buildObject (params) {
@@ -47,10 +48,10 @@ function buildCsv (params) {
 
 function expectCsv (csvParams) {
   return {
-    toParseTo (objectParams) {
+    async toParseTo (objectParams) {
       const csv = buildCsv(csvParams)
       const expected = buildObject(objectParams)
-      expect(parseCsv(csv)).toEqual([expected])
+      expect(await parseCsv(csv)).toEqual([expected])
     }
   }
 }
@@ -70,5 +71,21 @@ describe('parseCsv', () => {
 
   it('parses ₤ folio', () => {
     expectCsv({folio: 'folio1 ₤ folio2'}).toParseTo({folio: ['folio1', 'folio2']})
+  })
+
+  it('parses register', () => {
+    expectCsv({register: 'user1€01.07.2018€type1 ₤ user2€31.07.2018€type2'})
+      .toParseTo({register: [
+        {
+          user: 'user1',
+          date: '2018-07-01',
+          type: 'type1'
+        },
+        {
+          user: 'user2',
+          date: '2018-07-31',
+          type: 'type2'
+        }
+      ]})
   })
 })
