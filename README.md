@@ -9,7 +9,7 @@ A script to transform fragment database exported from FileMaker to JSON format.
 
 The CSV should have the following columns:
 ```
-_id,cdliNumber,bmidNumber,accession,genre,fincke,publicationPlace,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes
+_id,cdliNumber,bmIdNumber,accession,genre,fincke,publicationPlace,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes
 ```
 
 - `joins` is parsed to and array with ` + ` or `` as separator.
