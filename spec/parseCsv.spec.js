@@ -44,22 +44,26 @@ function buildCsv (params) {
 "${object._id}","${object.cdliNumber}","${object.bmidNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publicationPlace}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folio}","${object.register}","${object.transliteration}","${object.notes}"`
 }
 
+function expectCsv (csvParams) {
+  return {
+    toParseTo (objectParams) {
+      const csv = buildCsv(csvParams)
+      const expected = buildObject(objectParams)
+      expect(parseCsv(csv)).toEqual([expected])
+    }
+  }
+}
+
 describe('parseCsv', () => {
   it('parses all columns', () => {
-    const csv = buildCsv({})
-    const expected = buildObject({})
-    expect(parseCsv(csv)).toEqual([expected])
+    expectCsv({}).toParseTo({})
   })
 
   it('parses + joins', () => {
-    const csv = buildCsv({joins: 'join1 + join2'})
-    const expected = buildObject({joins: ['join1', 'join2']})
-    expect(parseCsv(csv)).toEqual([expected])
+    expectCsv({joins: 'join1 + join2'}).toParseTo({joins: ['join1', 'join2']})
   })
 
   it('parses  joins', () => {
-    const csv = buildCsv({joins: 'join1join2'})
-    const expected = buildObject({joins: ['join1', 'join2']})
-    expect(parseCsv(csv)).toEqual([expected])
+    expectCsv({joins: 'join1join2'}).toParseTo({joins: ['join1', 'join2']})
   })
 })
