@@ -88,4 +88,8 @@ describe('parseCsv', () => {
         }
       ]})
   })
+
+  it('parses empty script to NA', () => {
+    expectCsv({script: ''}).toParseTo({script: 'NA'})
+  })
 })
