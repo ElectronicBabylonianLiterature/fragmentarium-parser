@@ -6,3 +6,12 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 A script to transform fragment database exported from FileMaker to JSON format.
+
+The CSV should have the following columns:
+```
+_id,cdliNumber,bmidNumber,accession,genre,fincke,publicationPlace,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes
+```
+
+- `joins` is parsed to and array with ` + ` or `` as separator.
+- `folio` is parsed to an array with ` ₤ ` as separator.
+- `register` is parsed to an array of objects with ` ₤ ` as separator for array entries and `€` as separator for object properties. The resulting objects will have properties `user`, `date`, and `type`.
