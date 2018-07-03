@@ -27,7 +27,8 @@ const objectDefaults = {
   ...csvDefaults,
   joins: [],
   folio: [],
-  register: []
+  register: [],
+  museum: 'British Museum'
 }
 
 function buildObject (params) {
