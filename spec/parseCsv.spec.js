@@ -56,4 +56,10 @@ describe('parseCsv', () => {
     const expected = buildObject({joins: ['join1', 'join2']})
     expect(parseCsv(csv)).toEqual([expected])
   })
+
+  it('parses  joins', () => {
+    const csv = buildCsv({joins: 'join1join2'})
+    const expected = buildObject({joins: ['join1', 'join2']})
+    expect(parseCsv(csv)).toEqual([expected])
+  })
 })
