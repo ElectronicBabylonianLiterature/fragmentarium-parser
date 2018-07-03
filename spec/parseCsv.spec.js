@@ -17,7 +17,7 @@ const csvDefaults = {
   collection: 'collection',
   script: 'script',
   date: 'date',
-  folio: 'folio',
+  folio: '',
   register: 'register',
   transliteration: 'transliteration',
   notes: 'notes'
@@ -25,7 +25,8 @@ const csvDefaults = {
 
 const objectDefaults = {
   ...csvDefaults,
-  joins: []
+  joins: [],
+  folio: []
 }
 
 function buildObject (params) {
@@ -65,5 +66,9 @@ describe('parseCsv', () => {
 
   it('parses  joins', () => {
     expectCsv({joins: 'join1join2'}).toParseTo({joins: ['join1', 'join2']})
+  })
+
+  it('parses ₤ folio', () => {
+    expectCsv({folio: 'folio1 ₤ folio2'}).toParseTo({folio: ['folio1', 'folio2']})
   })
 })
