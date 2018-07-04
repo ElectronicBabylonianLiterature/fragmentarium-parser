@@ -33,12 +33,12 @@ describe('parseCsv', () => {
       .toParseTo({record: [
         {
           user: 'user1',
-          date: '2018-07-01',
+          date: new Date('2018-07-01 00:00:00Z'),
           type: 'type1'
         },
         {
           user: 'user2',
-          date: '2018-07-31',
+          date: new Date('2018-07-31 00:00:00Z'),
           type: 'type2'
         }
       ]})
