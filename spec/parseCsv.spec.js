@@ -28,7 +28,7 @@ const objectDefaults = {
   joins: [],
   folio: [],
   register: [],
-  museum: 'British Museum'
+  museum: 'The British Museum'
 }
 
 function buildObject (params) {
