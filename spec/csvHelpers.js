@@ -18,15 +18,15 @@ const csvDefaults = {
   folio: '',
   record: '',
   transliteration: 'transliteration',
-  notes: 'notes'
+  notes: 'notes',
+  museum: 'museum'
 }
 
 const objectDefaults = {
   ...csvDefaults,
   joins: [],
   folio: [],
-  record: [],
-  museum: 'The British Museum'
+  record: []
 }
 
 function buildObject (params) {
@@ -43,8 +43,8 @@ function buildCsv (...rowParams) {
   }))
 
   return [
-    '_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,record,transliteration,notes',
-    ...objects.map(object => `"${object._id}","${object.cdliNumber}","${object.bmIdNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publication}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folio}","${object.record}","${object.transliteration}","${object.notes}"`)
+    '_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,record,transliteration,notes,museum',
+    ...objects.map(object => `"${object._id}","${object.cdliNumber}","${object.bmIdNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publication}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folio}","${object.record}","${object.transliteration}","${object.notes}","${object.museum}"`)
   ].join('\n')
 }
 

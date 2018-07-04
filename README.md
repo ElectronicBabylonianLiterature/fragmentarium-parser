@@ -14,7 +14,7 @@ node index.js <path to the CSV file>
 
 The CSV must contain a header and have the following columns:
 ```
-_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes
+_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes,museum
 ```
 
 - `joins` is parsed to and array with ` + ` or `\u000b` as separator.
