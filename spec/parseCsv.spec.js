@@ -7,7 +7,7 @@ const csvDefaults = {
   accession: 'accession',
   genre: 'genre',
   fincke: 'fincke',
-  publicationPlace: 'publicationPlace',
+  publication: 'publication',
   joins: '',
   subcollection: 'subcollection',
   description: 'description',
@@ -43,8 +43,8 @@ function buildCsv (params) {
     ...csvDefaults,
     ...params
   }
-  return `_id,cdliNumber,bmIdNumber,accession,genre,fincke,publicationPlace,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes
-"${object._id}","${object.cdliNumber}","${object.bmIdNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publicationPlace}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folio}","${object.register}","${object.transliteration}","${object.notes}"`
+  return `_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes
+"${object._id}","${object.cdliNumber}","${object.bmIdNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publication}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folio}","${object.register}","${object.transliteration}","${object.notes}"`
 }
 
 function expectCsv (csvParams) {
