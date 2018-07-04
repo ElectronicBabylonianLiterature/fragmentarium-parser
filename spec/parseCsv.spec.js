@@ -17,11 +17,11 @@ describe('parseCsv', () => {
   })
 
   it('parses + joins', () => {
-    expectCsv({joins: 'join1 + join2'}).toParseTo({joins: ['join1', 'join2']})
+    expectCsv({joins: 'join1 + join2 + join3'}).toParseTo({joins: ['join1', 'join2', 'join3']})
   })
 
   it('parses \\u000b joins', () => {
-    expectCsv({joins: 'join1\u000bjoin2'}).toParseTo({joins: ['join1', 'join2']})
+    expectCsv({joins: 'join1\u000bjoin2\u000bjoin3'}).toParseTo({joins: ['join1', 'join2', 'join3']})
   })
 
   it('parses ₤ folio', () => {
