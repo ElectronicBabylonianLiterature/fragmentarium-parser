@@ -9,9 +9,9 @@ const csvDefaults = {
   joins: '',
   subcollection: 'subcollection',
   description: 'description',
-  length: 'length',
-  width: 'width',
-  thickness: 'thickness',
+  length: '',
+  width: '',
+  thickness: '',
   collection: 'collection',
   script: 'script',
   date: 'date',
@@ -26,7 +26,10 @@ const objectDefaults = {
   ...csvDefaults,
   joins: [],
   folio: [],
-  record: []
+  record: [],
+  width: {},
+  length: {},
+  thickness: {}
 }
 
 function buildObject (params) {

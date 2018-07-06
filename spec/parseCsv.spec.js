@@ -16,6 +16,18 @@ describe('parseCsv', () => {
     expectCsv({}).toParseTo({})
   })
 
+  it('length', () => {
+    expectCsv({length: '0,7 (notes)'}).toParseTo({length: {value: 0.7, note: '(notes)'}})
+  })
+
+  it('width', () => {
+    expectCsv({width: '1,3'}).toParseTo({width: {value: 1.3, note: ''}})
+  })
+
+  it('width', () => {
+    expectCsv({width: '13,0 (notes)'}).toParseTo({width: {value: 13.0, note: '(notes)'}})
+  })
+
   it('parses + joins', () => {
     expectCsv({joins: 'join1 + join2 + join3'}).toParseTo({joins: ['join1', 'join2', 'join3']})
   })
