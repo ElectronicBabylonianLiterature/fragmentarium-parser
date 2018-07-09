@@ -37,7 +37,15 @@ describe('parseCsv', () => {
   })
 
   it('parses ₤ folio', () => {
-    expectCsv({folio: 'folio1 ₤ folio2'}).toParseTo({folio: ['folio1', 'folio2']})
+    expectCsv({folio: 'ABC folio1 ₤ folio2'}).toParseTo({folio: [
+      {
+        name: 'ABC',
+        number: 'folio1'
+      }, {
+        name: '',
+        number: 'folio2'
+      }
+    ]})
   })
 
   it('parses record', () => {
