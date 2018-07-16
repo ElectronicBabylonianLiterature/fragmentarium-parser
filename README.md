@@ -14,11 +14,11 @@ node index.js <path to the CSV file>
 
 The CSV must contain a header and have the following columns:
 ```
-_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,register,transliteration,notes,museum
+_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folios,record,transliteration,notes,museum
 ```
 
 - `joins` is parsed to and array with ` + ` or `\u000b` as separator.
-- `folio` is parsed to an array with ` ₤ ` as separator.
-- `register` is parsed to an array of objects with ` ₤ ` as separator for array entries and `€` as separator for object properties. The resulting objects will have properties `user`, `date`, and `type`.
+- `folios` is parsed to an array with ` ₤ ` as separator.
+- `record` is parsed to an array of objects with ` ₤ ` as separator for array entries and `€` as separator for object properties. The resulting objects will have properties `user`, `date`, and `type`.
 - `\u000b` outside `joins` is parsed to `\n`.
 - `\u000b` in the beginning of string is omitted.

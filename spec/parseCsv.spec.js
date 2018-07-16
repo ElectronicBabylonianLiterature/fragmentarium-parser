@@ -36,8 +36,8 @@ describe('parseCsv', () => {
     expectCsv({joins: 'join1\u000bjoin2\u000bjoin3'}).toParseTo({joins: ['join1', 'join2', 'join3']})
   })
 
-  it('parses ₤ folio', () => {
-    expectCsv({folio: 'ABC folio1 ₤ folio2'}).toParseTo({folio: [
+  it('parses ₤ folios', () => {
+    expectCsv({folios: 'ABC folio1 ₤ folio2'}).toParseTo({folios: [
       {
         name: 'ABC',
         number: 'folio1'

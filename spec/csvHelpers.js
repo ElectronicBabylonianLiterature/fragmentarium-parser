@@ -15,7 +15,7 @@ const csvDefaults = {
   collection: 'collection',
   script: 'script',
   date: 'date',
-  folio: '',
+  folios: '',
   record: '',
   transliteration: 'transliteration',
   notes: 'notes',
@@ -25,7 +25,7 @@ const csvDefaults = {
 const objectDefaults = {
   ...csvDefaults,
   joins: [],
-  folio: [],
+  folios: [],
   record: [],
   width: {},
   length: {},
@@ -46,8 +46,8 @@ function buildCsv (...rowParams) {
   }))
 
   return [
-    '_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folio,record,transliteration,notes,museum',
-    ...objects.map(object => `"${object._id}","${object.cdliNumber}","${object.bmIdNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publication}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folio}","${object.record}","${object.transliteration}","${object.notes}","${object.museum}"`)
+    '_id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection,description,length,width,thickness,collection,script,date,folios,record,transliteration,notes,museum',
+    ...objects.map(object => `"${object._id}","${object.cdliNumber}","${object.bmIdNumber}","${object.accession}","${object.genre}","${object.fincke}","${object.publication}","${object.joins}","${object.subcollection}","${object.description}","${object.length}","${object.width}","${object.thickness}","${object.collection}","${object.script}","${object.date}","${object.folios}","${object.record}","${object.transliteration}","${object.notes}","${object.museum}"`)
   ].join('\n')
 }
 
