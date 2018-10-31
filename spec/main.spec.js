@@ -1,12 +1,12 @@
 const fs = require('fs')
-const {buildCsv, buildObject} = require('./csvHelpers')
+const { buildCsv, buildObject } = require('./csvHelpers')
 const main = require('../lib/main')
 
 const ids = ['1', '2']
 const csvFilename = 'export.csv'
-const csv = buildCsv(...ids.map(_id => ({_id})))
+const csv = buildCsv(...ids.map(_id => ({ _id })))
 const jsonFileName = 'fragmentarium.json'
-const expectedJson = JSON.stringify(ids.map(_id => buildObject({_id})), null, '\t')
+const expectedJson = JSON.stringify(ids.map(_id => buildObject({ _id })), null, '\t')
 
 describe('main', () => {
   beforeEach(() => {

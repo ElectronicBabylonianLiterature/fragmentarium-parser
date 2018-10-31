@@ -15,7 +15,7 @@ function expandFragment (fragment) {
 }
 
 function expandFolio (folio) {
-  const {digits, start, end} = parseFolioNumber(folio.number)
+  const { digits, start, end } = parseFolioNumber(folio.number)
   const expanded = []
   for (let number = start; number <= end; number++) {
     expanded.push({
@@ -48,12 +48,12 @@ function toPaddedString (number, padLength) {
 
 function setFolios (fragment) {
   db.getCollection('fragments').update(
-    {_id: fragment._id},
-    {$set: {folios: fragment.folios}}
+    { _id: fragment._id },
+    { $set: { folios: fragment.folios } }
   )
 }
 
 db.getCollection('fragments')
-  .find({'folios.number': /-/})
+  .find({ 'folios.number': /-/ })
   .map(expandFragment)
   .forEach(setFolios)

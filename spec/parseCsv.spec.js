@@ -1,5 +1,5 @@
 const parseCsv = require('../lib/parseCsv')
-const {buildCsv, buildObject} = require('./csvHelpers')
+const { buildCsv, buildObject } = require('./csvHelpers')
 
 function expectCsv (csvParams) {
   return {
@@ -17,27 +17,27 @@ describe('parseCsv', () => {
   })
 
   it('length', () => {
-    expectCsv({length: '0,7 (notes)'}).toParseTo({length: {value: 0.7, note: '(notes)'}})
+    expectCsv({ length: '0,7 (notes)' }).toParseTo({ length: { value: 0.7, note: '(notes)' } })
   })
 
   it('width', () => {
-    expectCsv({width: '1,3'}).toParseTo({width: {value: 1.3, note: ''}})
+    expectCsv({ width: '1,3' }).toParseTo({ width: { value: 1.3, note: '' } })
   })
 
   it('width', () => {
-    expectCsv({width: '13,0 (notes)'}).toParseTo({width: {value: 13.0, note: '(notes)'}})
+    expectCsv({ width: '13,0 (notes)' }).toParseTo({ width: { value: 13.0, note: '(notes)' } })
   })
 
   it('parses + joins', () => {
-    expectCsv({joins: 'join1 + join2 + join3'}).toParseTo({joins: ['join1', 'join2', 'join3']})
+    expectCsv({ joins: 'join1 + join2 + join3' }).toParseTo({ joins: ['join1', 'join2', 'join3'] })
   })
 
   it('parses \\u000b joins', () => {
-    expectCsv({joins: 'join1\u000bjoin2\u000bjoin3'}).toParseTo({joins: ['join1', 'join2', 'join3']})
+    expectCsv({ joins: 'join1\u000bjoin2\u000bjoin3' }).toParseTo({ joins: ['join1', 'join2', 'join3'] })
   })
 
   it('parses ₤ folios', () => {
-    expectCsv({folios: 'ABC folio1 ₤ folio2'}).toParseTo({folios: [
+    expectCsv({ folios: 'ABC folio1 ₤ folio2' }).toParseTo({ folios: [
       {
         name: 'ABC',
         number: 'folio1'
@@ -45,12 +45,12 @@ describe('parseCsv', () => {
         name: '',
         number: 'folio2'
       }
-    ]})
+    ] })
   })
 
   it('parses record', () => {
-    expectCsv({record: 'user1€01.07.2018€type1 ₤ user2€31.07.2018€type2'})
-      .toParseTo({record: [
+    expectCsv({ record: 'user1€01.07.2018€type1 ₤ user2€31.07.2018€type2' })
+      .toParseTo({ record: [
         {
           user: 'user1',
           date: new Date('2018-07-01 00:00:00Z'),
@@ -61,10 +61,10 @@ describe('parseCsv', () => {
           date: new Date('2018-07-31 00:00:00Z'),
           type: 'type2'
         }
-      ]})
+      ] })
   })
 
   it('parses empty script to NA', () => {
-    expectCsv({script: ''}).toParseTo({script: 'NA'})
+    expectCsv({ script: '' }).toParseTo({ script: 'NA' })
   })
 })
