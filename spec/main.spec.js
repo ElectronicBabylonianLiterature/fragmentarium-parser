@@ -10,17 +10,17 @@ const expectedJson = JSON.stringify(ids.map(_id => buildObject({ _id })), null, 
 
 describe('main', () => {
   beforeEach(() => {
-    spyOn(fs, 'readFile').and.callFake((file, charset, cb) => cb(null, csv))
-    spyOn(fs, 'writeFile').and.callFake((file, dict, cb) => cb())
+    jest.spyOn(fs, 'readFile').mockImplementation((file, charset, cb) => cb(null, csv))
+    jest.spyOn(fs, 'writeFile').mockImplementation((file, dict, cb) => cb())
   })
 
   it('reads the given file', async () => {
-    await main(csvFilename).catch(fail)
-    expect(fs.readFile).toHaveBeenCalledWith(csvFilename, 'utf8', jasmine.any(Function))
+    await main(csvFilename)
+    expect(fs.readFile).toHaveBeenCalledWith(csvFilename, 'utf8', expect.any(Function))
   })
 
   it('writes output to fragmentarium.json', async () => {
-    await main(csvFilename).catch(fail)
-    expect(fs.writeFile).toHaveBeenCalledWith(jsonFileName, expectedJson, jasmine.any(Function))
+    await main(csvFilename)
+    expect(fs.writeFile).toHaveBeenCalledWith(jsonFileName, expectedJson, expect.any(Function))
   })
 })

@@ -21,7 +21,7 @@
   "standard": {
     "parser": "babel-eslint",
     "env": {
-      "jasmine": true,
+      "jest": true,
       "node": true
     }
   },
