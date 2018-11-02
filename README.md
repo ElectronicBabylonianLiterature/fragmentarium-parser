@@ -22,3 +22,8 @@ _id,cdliNumber,bmIdNumber,accession,genre,fincke,publication,joins,subcollection
 - `record` is parsed to an array of objects with ` ₤ ` as separator for array entries and `€` as separator for object properties. The resulting objects will have properties `user`, `date`, and `type`.
 - `\u000b` outside `joins` is parsed to `\n`.
 - `\u000b` in the beginning of string is omitted.
+
+## Scripts
+
+- `scripts/expandFolioNumbers.js` expands folio numbers in range format (e.g. `08927-8`) to individual entries.
+
